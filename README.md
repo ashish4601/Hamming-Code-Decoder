@@ -1,9 +1,15 @@
 # Hamming Code Decoder with ASCII Message Recovery and PGM Row Interchange
 
-This project implements a **Hamming Code Decoder** that:
-- Corrects **single-bit errors** in standard Hamming codewords.
-- Recovers **ASCII messages** encoded with two (7,4) Hamming blocks per character.
-- Optionally supports **row interchange** in grayscale **PGM image** files.
+A complete Hamming Code Decoder application built using **PyQt5** and **NumPy**.  
+This tool corrects single-bit errors in Hamming-encoded binary data, decodes ASCII messages, and allows row interchange in grayscale PGM images.
+
+---
+
+## 🚀 Tech Stack
+
+- 🐍 **Python 3**
+- 📦 **NumPy** – for bit-level operations and matrix handling
+- 🖥️ **PyQt5** – for building the user interface (if GUI is included)
 
 ---
 
@@ -11,41 +17,32 @@ This project implements a **Hamming Code Decoder** that:
 
 ### ✅ Hamming Decoder
 - Accepts a list of binary strings (codewords).
-- Uses `r` parity bits to detect and fix one-bit errors.
-- Returns the original message bits after correction.
+- Uses `r` parity bits to detect and correct one-bit errors.
+- Returns the original message bits.
 
 ### 🔡 ASCII Message Decoder (1-bit error per 7 bits)
-- Each 8-bit ASCII character is split into two 4-bit segments.
-- Each 4-bit segment is Hamming (7,4) encoded and may contain at most one error.
-- The decoder corrects errors and reconstructs the ASCII string.
+- Each ASCII character (8 bits) is split into two 4-bit parts.
+- Encoded using Hamming (7,4), with max 1 error per 7 bits.
+- Corrects and reconstructs the original ASCII message.
 
 ### 🖼️ PGM Row Interchange (Optional)
-- Supports loading a `.pgm` (grayscale) image file.
-- Allows users to interchange rows in the image.
-- Saves the modified image back in PGM format.
+- Allows custom row-swapping (e.g., for error simulation or recovery).
+- Outputs a modified PGM with the new row order.
 
 ---
 
 ## 📥 Inputs
 
-1. **r**: Number of parity bits (usually 3 for Hamming(7,4)).
-2. **codewords**: List of received Hamming-encoded binary strings.
-3. **ascii_codewords**: List of 7-bit strings (each encoded with 1-bit error).
-4. **pgm_image (optional)**: Path to a PGM file for row interchange functionality.
+1. **r**: Number of parity bits used in encoding (typically 3 for (7,4)).
+2. **codewords**: List of binary Hamming code strings.
+3. **ascii_codewords**: List of 7-bit Hamming blocks (1 error per 7 bits).
 
 ---
 
 ## 📤 Outputs
 
-- Decoded message bits from Hamming code.
-- Corrected ASCII string from 7-bit encoded blocks.
-- Modified PGM file (if row swapping is used).
+- Original message bits from corrected codewords.
+- Corrected ASCII message from encoded 7-bit blocks.
+- Updated `.pgm` file with modified rows (if used).
 
 ---
-
-## 🚀 How to Run
-
-1. Clone the repo:
-```bash
-git clone https://github.com/yourusername/hamming-code-decoder.git
-cd hamming-code-decoder
